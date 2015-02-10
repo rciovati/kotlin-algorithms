@@ -5,8 +5,10 @@ import org.junit.After
 import org.junit.Before
 import java.io.FileInputStream
 import java.io.File
+import io.github.rciovati.kotlin.assertArrayEquals
+import io.github.rciovati.kotlin.assertArrayIsSorted
 
-public class ArrayMergeTest {
+public class MergeSortTest {
 
     Test fun mergeSameLength() {
 
@@ -46,26 +48,5 @@ public class ArrayMergeTest {
 
         assertEquals(4, array.size())
         assertArrayIsSorted(array)
-    }
-
-    fun assertArrayEquals(expected: Array<Int>, actual: Array<Int>): Unit {
-        for (i in actual.indices) {
-            if (expected[i] != actual[i]) {
-                fail("Expected ${expected[i]} but found ${actual[i]}")
-            }
-        }
-    }
-
-    fun assertArrayIsSorted(actual: Array<Int>) {
-        for (i in 0..actual.size() - 2) {
-            if (actual[i] > actual[i + 1]) {
-                fail("${actual[i]} is greater than ${actual[i + 1]}")
-            }
-        }
-    }
-
-    fun <T> printArray(array: Array<T>) {
-        val s = array.joinToString(separator = ", ", prefix = "Array: ")
-        println(s)
     }
 }
