@@ -1,10 +1,5 @@
 import org.junit.Test
-import junit.framework.TestCase
 import kotlin.test.*
-import org.junit.After
-import org.junit.Before
-import java.io.FileInputStream
-import java.io.File
 import io.github.rciovati.kotlin.assertArrayEquals
 import io.github.rciovati.kotlin.assertArrayIsSorted
 

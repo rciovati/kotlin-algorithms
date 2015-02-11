@@ -17,8 +17,3 @@ fun <T : Comparable<T>> assertArrayIsSorted(actual: Array<T>) {
         }
     }
 }
-
-fun <T> printArray(array: Array<T>) {
-    val s = array.joinToString(separator = ", ", prefix = "Array: ")
-    println(s)
-}
