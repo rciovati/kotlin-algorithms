@@ -79,5 +79,29 @@ public class BinaryTreeTest {
 
         assertArrayEquals(array(4, 5, 6, 7), array)
     }
+
+    Test fun testHeight() {
+
+        val seven = BinaryTree(7)
+        val six = BinaryTree(6)
+
+        val five = BinaryTree(5)
+        val four = BinaryTree(4)
+
+        val three = BinaryTree(3)
+        val two = BinaryTree(2)
+
+        three.rightTree = seven
+        three.leftTree = six
+
+        two.rightTree = five
+        two.leftTree = four
+
+        val root = BinaryTree(1)
+        root.rightTree = three
+        root.leftTree = two
+
+        assertEquals(2, root.height())
+    }
 }
 

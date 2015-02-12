@@ -29,4 +29,14 @@ class BinaryTree<T>(val data: T) {
             rightTree?.visitNodesAtLevel(visitor, targetLevel, currentLevel + 1)
         }
     }
+
+    fun height(): Int {
+        if (leftTree == null && rightTree == null) {
+            return 0
+        } else {
+            val leftTreeHeight = leftTree?.height() ?: 0
+            val rightTreeHeight = rightTree?.height() ?: 0
+            return 1 + Math.max(leftTreeHeight, rightTreeHeight)
+        }
+    }
 }
