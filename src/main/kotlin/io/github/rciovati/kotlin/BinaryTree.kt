@@ -1,3 +1,5 @@
+import java.util.ArrayDeque
+
 class BinaryTree<T>(val data: T) {
 
     var leftTree: BinaryTree<T>? = null
@@ -37,6 +39,26 @@ class BinaryTree<T>(val data: T) {
             val leftTreeHeight = leftTree?.height() ?: 0
             val rightTreeHeight = rightTree?.height() ?: 0
             return 1 + Math.max(leftTreeHeight, rightTreeHeight)
+        }
+    }
+
+    fun bfs(visitor: (T) -> Unit) {
+        val queue = ArrayDeque<BinaryTree<T>>()
+        queue.addLast(this)
+
+        while (!queue.isEmpty()) {
+            val node = queue.pollFirst();
+            visitor(node.data)
+
+            val left = node.leftTree
+            if (left != null) {
+                queue.addLast(left)
+            }
+
+            val right = node.rightTree
+            if (right != null) {
+                queue.addLast(right)
+            }
         }
     }
 }

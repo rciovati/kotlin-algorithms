@@ -53,24 +53,7 @@ public class BinaryTreeTest {
 
     Test fun testVisitAtLevel() {
 
-        val seven = BinaryTree(7)
-        val six = BinaryTree(6)
-
-        val five = BinaryTree(5)
-        val four = BinaryTree(4)
-
-        val three = BinaryTree(3)
-        val two = BinaryTree(2)
-
-        three.rightTree = seven
-        three.leftTree = six
-
-        two.rightTree = five
-        two.leftTree = four
-
-        val root = BinaryTree(1)
-        root.rightTree = three
-        root.leftTree = two
+        val root = buildSampleTree()
 
         var array: Array<Int> = Array(4, { 0 })
         var i = 0;
@@ -82,6 +65,25 @@ public class BinaryTreeTest {
 
     Test fun testHeight() {
 
+        val root = buildSampleTree()
+
+        assertEquals(2, root.height())
+    }
+
+    Test fun testBfs() {
+
+        val root = buildSampleTree()
+
+        var array: Array<Int> = Array(7, { 0 })
+        var i = 0;
+
+        root.bfs { array[i++] = it }
+
+        assertArrayEquals(array(1, 2, 3, 4, 5, 6, 7), array)
+    }
+
+    private fun buildSampleTree(): BinaryTree<Int> {
+
         val seven = BinaryTree(7)
         val six = BinaryTree(6)
 
@@ -100,8 +102,7 @@ public class BinaryTreeTest {
         val root = BinaryTree(1)
         root.rightTree = three
         root.leftTree = two
-
-        assertEquals(2, root.height())
+        return root
     }
 }
 

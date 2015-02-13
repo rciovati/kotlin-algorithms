@@ -9,12 +9,15 @@ fun <T> buildNodesList(tree: BinaryTree<T>, array: MutableList<MutableSet<T>>, c
 
     array.get(currentLevel).add(tree.data)
 
-    if (tree.leftTree != null) {
-        buildNodesList(tree.leftTree as BinaryTree<T>, array, currentLevel + 1)
+    val left = tree.leftTree
+    val right = tree.rightTree
+
+    if (left != null) {
+        buildNodesList(left, array, currentLevel + 1)
     }
 
-    if (tree.rightTree != null) {
-        buildNodesList(tree.rightTree as BinaryTree<T>, array, currentLevel + 1)
+    if (right != null) {
+        buildNodesList(right, array, currentLevel + 1)
     }
 }
 
